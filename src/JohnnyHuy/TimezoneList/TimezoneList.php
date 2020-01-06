@@ -13,7 +13,7 @@ class TimezoneList
     /**
      * Whitespace separate
      */
-    protected const WHITESPACE_SEP = '&nbsp;&nbsp;&nbsp;&nbsp;';
+    protected const WHITESPACE_SEP = '&nbsp;';
 
     /**
      * Popular timezones
@@ -55,14 +55,14 @@ class TimezoneList
     {
         $time = new DateTime(null, new DateTimeZone($timezone));
         $offset = $time->format('P');
-        $offset = str_replace('-', ' &minus; ', $offset);
-        $offset = str_replace('+', ' &plus; ', $offset);
+        $offset = str_replace('-', ' &minus;', $offset);
+        $offset = str_replace('+', ' &plus;', $offset);
 
         $timezone = substr($timezone, strlen($continent) + 1);
         $timezone = str_replace('St_', 'St . ', $timezone);
         $timezone = str_replace('_', ' ', $timezone);
 
-        $formatted = '(GMT/UTC' . $offset  . ')' . self::WHITESPACE_SEP . $timezone;
+        $formatted = 'UTC' . $offset . self::WHITESPACE_SEP . $timezone;
         return $formatted;
     }
 
