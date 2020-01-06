@@ -1,29 +1,25 @@
-# Feature
+# Features
+
+This is a fork from [JackieDo/Timezone-List](https://github.com/JackieDo/Timezone-List) to update package to the latest Laravel framework versions. All previous commits are credited to [JackieDo](https://github.com/JackieDo).
+
 - Render a timezone listbox (select element) in Laravel
 - Render a timezone array in Laravel
 
 ## Versions and compatibility
 
-Currently, there are some branches of Timezone-List is compatible with the following version of Laravel framework
+This package will be compatable for Laravel versions 6.0+.
 
-| Timezone-List branch                                          | Laravel version  |
-| ------------------------------------------------------------- | ---------------- |
-| [4.x](https://github.com/JackieDo/Timezone-List/tree/4.x)     | 4.x              |
-| [5.x](https://github.com/JackieDo/Timezone-List/tree/5.x)     | 5.x              |
-
-This documentation is use for Laravel 5.x
-
-# Installation
+## Installation
 
 You can install this package through [Composer](https://getcomposer.org).
 
-- First, edit your project's `composer.json` file to require `jackiedo/timezonelist`:
+- First, edit your project's `composer.json` file to require `johnnyhuy/timezonelist`:
 
-```php
+```json
 ...
 "require": {
 	...
-    "jackiedo/timezonelist": "5.*"
+    "johnnyhuy/timezonelist": "5.*"
 },
 ```
 
@@ -39,19 +35,20 @@ $ composer update
 ...
 'providers' => array(
     ...
-    Jackiedo\Timezonelist\TimezonelistServiceProvider::class,
+    JohnnyHuy\TimezoneList\TimezoneListServiceProvider::class,
 ),
 ```
 
-# Usage
+## Usage
 
-###### 1. Render a timezone listbox
+### 1. Render a timezone listbox
 
-To do so, use method `Timezonelist::create($name)`.
+To do so, use method `TimezoneList::create($name)`.
 
 Example:
+
 ```php
-Timezonelist::create('timezone');
+TimezoneList::create('timezone');
 ```
 
 This will output the following:
@@ -502,52 +499,59 @@ This will output the following:
         </optgroup>
     </select>
 
-Method `Timezonelist::create()` have three parameters:
-```php
-Timezonelist::create($name, $selected, $attr);
-```
-- The first parameter is required, but the second and third is optional.
+Method `TimezoneList::create()` have three parameters:
 
+```php
+TimezoneList::create($name, $selected, $attr);
+```
+
+- The first parameter is required, but the second and third is optional.
 - The second parameter use to set selected value of list box.
 
 Example:
+
 ```php
-Timezonelist::create('timezone', 'Asia/Ho_Chi_Minh');
+TimezoneList::create('timezone', 'Asia/Ho_Chi_Minh');
 ```
 
 - The third parameter use to set HTML attribute of select tag.
 
 Example:
+
 ```php
-Timezonelist::create('timezone', null, 'class="styled"');
+TimezoneList::create('timezone', null, 'class="styled"');
 ```
 
 You can also add multiple attribute.
 
 Example:
+
 ```php
-Timezonelist::create('timezone', null, 'id="timezone" class="styled"');
+TimezoneList::create('timezone', null, 'id="timezone" class="styled"');
 ```
 
 Or you can also add multiple attribute with one array.
 
 Example:
+
 ```php
-Timezonelist::create('timezone', null, [
+TimezoneList::create('timezone', null, [
     'id'    => 'timezone',
     'class' => 'styled',
     ...
 ]);
 ```
 
-###### 2. Render a timezone array
+### 2. Render a timezone array
 
-You can also render timezone list as an array. To do so, just use method `Timezonelist::toArray()`.
+You can also render timezone list as an array. To do so, just use method `TimezoneList::toArray()`.
 
 Example in Laravel:
+
 ```php
-$timezone_list = Timezonelist::toArray();
+$timezone_list = TimezoneList::toArray();
 ```
 
-# Thanks for use
+## Thanks for use
+
 Hopefully, this package is useful to you.

@@ -1,15 +1,14 @@
-<?php namespace Jackiedo\Timezonelist;
+<?php
+
+namespace JohnnyHuy\TimezoneList;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * TimezonelistServiceProvider
- *
- * @package Jackiedo\Timezonelist
- * @author Jackie Do <anhvudo@gmail.com>
+ * TimezoneListServiceProvider
  */
-class TimezonelistServiceProvider extends ServiceProvider
+class TimezoneListServiceProvider extends ServiceProvider
 {
 
     /**
@@ -37,12 +36,12 @@ class TimezonelistServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('timezonelist', function ($app) {
-            return new Timezonelist;
+            return new TimezoneList();
         });
 
         $this->app->booting(function () {
             $loader = AliasLoader::getInstance();
-            $loader->alias('Timezonelist', 'Jackiedo\Timezonelist\Facades\Timezonelist');
+            $loader->alias('TimezoneList', 'JohnnyHuy\TimezoneList\Facades\TimezoneList');
         });
     }
 

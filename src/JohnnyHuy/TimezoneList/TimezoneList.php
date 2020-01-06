@@ -1,20 +1,19 @@
-<?php namespace Jackiedo\Timezonelist;
+<?php
+
+namespace JohnnyHuy\TimezoneList;
 
 use DateTime;
 use DateTimeZone;
 
 /**
- * The Timezonelist facade.
- *
- * @package Jackiedo\Timezonelist
- * @author Jackie Do <anhvudo@gmail.com>
+ * The TimezoneList facade.
  */
-class Timezonelist
+class TimezoneList
 {
     /**
-     * Whitespace seperate
+     * Whitespace separate
      */
-    const WHITESPACE_SEP = '&nbsp;&nbsp;&nbsp;&nbsp;';
+    protected const WHITESPACE_SEP = '&nbsp;&nbsp;&nbsp;&nbsp;';
 
     /**
      * Popular timezones
@@ -60,10 +59,10 @@ class Timezonelist
         $offset = str_replace('+', ' &plus; ', $offset);
 
         $timezone = substr($timezone, strlen($continent) + 1);
-        $timezone = str_replace('St_', 'St. ', $timezone);
+        $timezone = str_replace('St_', 'St . ', $timezone);
         $timezone = str_replace('_', ' ', $timezone);
 
-        $formatted = '(GMT/UTC' . $offset . ')' . self::WHITESPACE_SEP . $timezone;
+        $formatted = '(GMT/UTC' . $offset  . ')' . self::WHITESPACE_SEP . $timezone;
         return $formatted;
     }
 
@@ -83,21 +82,21 @@ class Timezonelist
         if (!empty($attr)) {
             if (is_array($attr)) {
                 foreach ($attr as $attr_name => $attr_value) {
-                    $attrSet .= ' ' .$attr_name. '="' .$attr_value. '"';
+                    $attrSet .= ' ' . $attr_name . '="' . $attr_value . '"';
                 }
             } else {
-                $attrSet = ' ' .$attr;
+                $attrSet = ' ' . $attr;
             }
         }
 
         // start select element
-        $listbox = '<select name="' .$name. '"' .$attrSet. '>';
+        $listbox = '<select name="' . $name . '"' . $attrSet . '>';
 
         // Add popular timezones
         $listbox .= '<optgroup label="General">';
         foreach ($this->popularTimezones as $key => $value) {
             $selected_attr = ($selected == $key) ? ' selected="selected"' : '';
-            $listbox .= '<option value="' .$key. '"' .$selected_attr. '>' .$value. '</option>';
+            $listbox .= '<option value="' . $key . '"' . $selected_attr . '>' . $value . '</option>';
         }
         $listbox .= '</optgroup>';
 
@@ -106,13 +105,13 @@ class Timezonelist
             $timezones = DateTimeZone::listIdentifiers($mask);
 
             // start optgroup tag
-            $listbox .= '<optgroup label="' .$continent. '">';
+            $listbox .= '<optgroup label="' . $continent . '">';
 
             // create option tags
             foreach ($timezones as $timezone) {
                 $selected_attr = ($selected == $timezone) ? ' selected="selected"' : '';
 
-                $listbox .= '<option value="' .$timezone. '"' .$selected_attr. '>';
+                $listbox .= '<option value="' . $timezone . '"' . $selected_attr . '>';
                 $listbox .= $this->formatTimezone($timezone, $continent);
                 $listbox .= '</option>';
             }

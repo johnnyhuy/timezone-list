@@ -1,14 +1,13 @@
-<?php namespace Jackiedo\Timezonelist\Facades;
+<?php
+
+namespace JohnnyHuy\TimezoneList\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * The Timezonelist facade.
- *
- * @package Jackiedo\Timezonelist\Facades
- * @author Jackie Do <anhvudo@gmail.com>
+ * The TimezoneList facade.
  */
-class Timezonelist extends Facade
+class TimezoneList extends Facade
 {
     /**
      * Get the registered name of the component.
