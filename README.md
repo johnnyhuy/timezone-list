@@ -14,7 +14,7 @@ This package will be compatable for Laravel versions 6.0+.
 You can install this package through [Composer](https://getcomposer.org).
 
 ```shell
-$ composer require johnnyhuy/timezonelist
+$ composer require johnnyhuy/timezone-list
 ```
 
 - Once update operation completes, the final step is to add the service provider. Open `config/app.php`, and add a new item to the providers array:
